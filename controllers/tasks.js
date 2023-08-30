@@ -3,7 +3,8 @@ const getAllTasks = (req, res) => {
 };
 
 const createTask = (req, res) => {
-  res.send("add new task");
+  const body = req.body;
+  res.json(body);
 };
 
 const getTask = (req, res) => {
