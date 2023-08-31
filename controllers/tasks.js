@@ -3,7 +3,7 @@ const Task = require("../models/Task");
 const getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find({});
-    res.status(200).json({ success: true, tasks });
+    res.status(200).json({ tasks });
   } catch (error) {
     res.status(500).json({ success: false, msg: error });
   }
@@ -12,7 +12,7 @@ const getAllTasks = async (req, res) => {
 const createTask = async (req, res) => {
   try {
     const task = await Task.create(req.body);
-    res.status(200).json({ success: true, data: task });
+    res.status(200).json({ task });
   } catch (error) {
     res.status(500).json({ success: false, msg: error });
   }
@@ -29,7 +29,7 @@ const getTask = async (req, res) => {
         .json({ success: false, msg: `No task with id: ${taskId}` });
     }
 
-    res.status(200).json({ success: true });
+    res.status(200).json({ task });
   } catch (error) {
     res.status(500).json({ success: false, msg: error });
   }
@@ -50,7 +50,7 @@ const updateTask = async (req, res) => {
         .json({ success: false, msg: `No task with id: ${taskId}` });
     }
 
-    res.status(200).json({ success: true, data: updatedTask });
+    res.status(200).json({ task: updatedTask });
   } catch (error) {
     res.status(500).json({ success: false, msg: error });
   }
@@ -67,7 +67,7 @@ const deleteTask = async (req, res) => {
         .json({ success: false, msg: `No task with id: ${taskId}` });
     }
 
-    res.status(200).json({ success: true, data: deletedTask });
+    res.status(200).json({ task: deletedTask });
   } catch (error) {
     res.status(500).json({ success: false, msg: error });
   }
